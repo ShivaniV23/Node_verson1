@@ -1,0 +1,20 @@
+{
+  "name": "dev-tinder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node src/app.js",
+    "dev" : "nodemon src/app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Shivani Vippaheli",
+  "license": "ISC",
+  "description": "Starting with nodeJS",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
