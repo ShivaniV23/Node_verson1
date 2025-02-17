@@ -3,7 +3,7 @@ const connectDB = require("./config/database.js");
 const app = express();
 const User = require("./models/user")
 const bcrypt = require("bcrypt");
-const {validateSignupData} = require("./utils/validation")
+const {validateSignupData} = require("./utils/validation") 
 
 
 //middle ware activation for json to js object
@@ -54,6 +54,11 @@ app.post("/login",async(req,res) => {
         //password
         const isPasswordValid = await bcrypt.compare(password,user.password);
         if(isPasswordValid) {
+
+            //create a JWT token
+
+            //Add the tokem to cookie and send the response back to the user
+            res.cookie("token","sadhjdhsudwididhwhd8wd")
             res.send("Login Successfull!!");
         } else {
             throw new Error("Invalid credentials");
@@ -62,6 +67,15 @@ app.post("/login",async(req,res) => {
     } catch(err) {
         res.status(400).send("ERROR : " + err.message);
     }
+})
+
+//Get profile
+
+app.get("/profile",async(req,res) => {
+
+    const cookies = req.cookies;
+    console.log(cookies);
+    res.send("Reading cookies");
 })
 //Get user by email
 app.get("/user",async(req,res) => {
@@ -133,7 +147,7 @@ app.patch("/user/:userId" ,async (req,res) => {
         res.status(400).send("Update failed : " + err.message);
     }
 });
-
+//pushing code
 
 
 
@@ -148,4 +162,3 @@ connectDB()
 .catch ((err) => {
     console.error("Database cannot be connected");
 })
-
